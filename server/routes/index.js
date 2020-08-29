@@ -1,6 +1,14 @@
 const router = require("express").Router()
-//import models from /db
+const {Example} = require('../db/models/Example')
 
 //routes go here
+router.get('/example', async (req, res, next)=> {
+  try {
+    res.send(await Example.findAll());
+  }
+  catch(ex){
+    next(ex);
+  }
+});
 
 module.exports = router

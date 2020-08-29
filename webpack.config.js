@@ -4,6 +4,7 @@ module.exports = {
 		path: __dirname,
 		filename: "./server/public/bundle.js",
 	},
+	mode: 'development',
 	resolve: {
 		extensions: [".js", ".jsx"],
 	},

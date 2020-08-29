@@ -4,11 +4,10 @@
 	"description": "",
 	"main": "server/index.js",
 	"scripts": {
-		"test": "mocha \"**/*.spec.js\"",
-		"build": "webpack",
-		"build:dev": "webpack -w",
-		"start": "node server/index.js",
-		"start:dev": "npm run build && nodemon --ignore client --ignore server/public"
+    "start:dev": "npm run start-server & npm run build-watch",
+    "start-server": "nodemon --watch server -e js,html server/main.js",
+		"build-watch": "webpack -w",
+		"start": "webpack && node server/index.js"
 	},
 	"author": "",
 	"license": "ISC",
