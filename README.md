@@ -35,3 +35,7 @@ Sous Chef really ain't much. It relies on:
 
 Recipes are limited to those from [supported websites](https://github.com/jadkins89/Recipe-Scraper#supported-websites).  
 Speech recognition uses a [library](https://github.com/TalAter/annyang/) that relies on the browser's built-in speech recognition API. It doesn't seem to work on iOS devices at all, and Chrome on Android is a little bit flakey 😞
+
+## Try It, I Guess
+
+[http://souschefspeaks.herokuapp.com/](http://souschefspeaks.herokuapp.com/)
