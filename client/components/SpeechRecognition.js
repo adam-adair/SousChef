@@ -50,4 +50,4 @@ export const StopListening = () => {
 
 export const Spoken = ({spokenCommand}) => <div id="spoken">{spokenCommand.length ? `Sous Chef: ${spokenCommand}` : null}</div>
 
-export const ReadAloud = ({readAloud}) => <div id="spoken">{readAloud.length ? `${readAloud}` : null}</div>
+export const ReadAloud = ({readAloud}) => <div id="read">{readAloud.length ? `${readAloud}` : null}</div>

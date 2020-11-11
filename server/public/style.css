@@ -1,0 +1,143 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: rgb(151, 203, 255);
+  margin: 1rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+#howTo {
+  text-align: center;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+#urlContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#recipeURL {
+  border-radius: 1rem;
+  font-family: 'Poppins', sans-serif;
+  padding: .4rem;
+  width: 80%;
+  border: none;
+  outline: none;
+}
+
+#recipeURL:hover {
+  background-color:  rgb(231, 255, 238)
+}
+
+#errors, .close {
+  color: red;
+}
+
+#recipeContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#writtenAudio {
+  background-color: white;
+  border-radius: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 1rem;
+}
+
+#ingredContainer {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: rgb(255, 231, 231);
+}
+
+#read {
+  color: darkblue;
+}
+
+#ingredContainer > h2, #instrContainer > h2 {
+  text-align: center;
+}
+
+#instrContainer {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: rgb(253, 232, 193);
+}
+
+#listen {
+  background-color:  rgb(94, 179, 119);
+  margin: 1rem;
+  padding: 1rem;
+  border: none;
+  border-radius: .5rem;
+  color: white;
+  font-weight: bold;
+  outline: none;
+  text-decoration: grey;
+}
+
+#listen:hover {
+  background-color:  rgb(78, 151, 100);
+}
+
+#stop {
+  background-color:  rgb(179, 94, 94);
+  margin: 1rem;
+  padding: 1rem;
+  border: none;
+  border-radius: .5rem;
+  color: white;
+  font-weight: bold;
+  outline: none;
+  text-decoration: grey;
+}
+
+#stop:hover {
+  background-color:  rgb(151, 78, 78);
+}
+
+.singleIngredient > input {
+  border-radius: 1rem;
+  font-family: 'Poppins', sans-serif;
+  padding: .4rem;
+  border: none;
+  outline: none;
+}
+
+.singleInstruction > textarea {
+  border-radius: 1rem;
+  font-family: 'Poppins', sans-serif;
+  padding: .4rem;
+  border: none;
+  outline: none;
+  height: 5rem;
+  resize: none;
+}
+
+.otherButton {
+  background-color: dodgerblue;
+  border-radius: 1rem;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.deleteButton {
+  background-color: firebrick;
+  border-radius: 1rem;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1.2rem;
+}
