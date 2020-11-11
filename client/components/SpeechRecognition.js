@@ -3,6 +3,7 @@
 import React from "react"
 import annyang from 'annyang'
 import textNumbers from '../../textNumbers'
+import textToSpeech from './TextToSpeech'
 
 export const compatible = !!annyang
 
@@ -27,6 +28,7 @@ export const StartListening = ({ ingredients, instructions, showSpokenCommand, s
         } else readAloud = ["Sorry, I don't find that step."]
       }
       showReadAloud(readAloud)
+      textToSpeech(readAloud, annyang)
     }
 
     const commands = {'sous chef *item': sousChef}
