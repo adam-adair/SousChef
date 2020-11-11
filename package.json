@@ -21,12 +21,12 @@
 		"react-dom": "^16.13.1",
 		"recipe-scraper": "^1.23.4",
 		"webpack": "^4.44.1",
-		"webpack-cli": "^3.3.12"
-	},
-	"devDependencies": {
+		"webpack-cli": "^3.3.12",
 		"nodemon": "^2.0.4",
 		"@babel/core": "^7.4.3",
 		"@babel/preset-react": "^7.0.0",
 		"babel-loader": "^8.0.5"
+	},
+	"devDependencies": {
 	}
 }
