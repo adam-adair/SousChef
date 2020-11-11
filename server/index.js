@@ -1,10 +1,14 @@
 const express = require("express")
 const morgan = require('morgan')
 const path = require('path')
-const { db } = require('./db')
+const recipeScraper = require("recipe-scraper");
+const enforce = require('express-sslify');
 
 //initialize app
 const app = express()
+
+//force SSL if deployed; required for microphone API
+if(app.get("env")==="production") app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 // Logging middleware
 app.use(morgan("dev"))
@@ -16,8 +20,15 @@ app.use(express.urlencoded({extended: true}))
 // Static file-serving middleware
 app.use(express.static(path.join(__dirname, 'public')))
 
-//require in your routes and use them on your api path
-app.use('/api', require('./routes'))
+//POST route for recipeScraper
+app.post('/', async (req, res, next) => {
+  try {
+    const recipe = await recipeScraper(req.body.recipeURL)
+    res.status(200).send(recipe)
+  } catch (err) {
+    res.status(400).send({message:err.message})
+  }
+})
 
 //404 handler
 app.use(function (req, res, next) {
@@ -34,9 +45,8 @@ app.use(function (err, req, res, next) {
 const PORT = process.env.PORT || 3000
 
 //listen
-const init = async () => {
+const init = () => {
   try {
-    await db.sync();
     app.listen(PORT, () => console.log(`
 
           Listening on port ${PORT}
