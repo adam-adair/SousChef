@@ -5,7 +5,7 @@
 /* eslint-disable react/no-array-index-key */
 import React from "react"
 import axios from 'axios'
-import {StartListening, StopListening, Spoken, ReadAloud, compatible} from './SpeechRecognition'
+import SpeechRecognition, { Spoken, ReadAloud, compatible} from './SpeechRecognition'
 
 export default class SousChef extends React.Component {
 	constructor () {
@@ -129,23 +129,57 @@ export default class SousChef extends React.Component {
 		const { updateRecipeURL, enableIngredient, editIngredient, enableInstruction, editInstruction, showSpokenCommand, showReadAloud, editNewIngredient, addNewIngredient, deleteIngredient, editNewInstruction, addNewInstruction, deleteInstruction, moveInstruction, changeLooky } = this
 		return (
 			<div>
-				<h1>Sous Chef</h1>
+				<img className="logo" src='logo.png'/>
 				<div id="howTo" onClick={changeLooky}>How Does It Work?</div>
+				{ lookyWorky?
+					<div id="lookyWorky">
+						<p onClick={changeLooky} className="close">click to close</p>
+						<h3>How To Use</h3>
+						<p>
+							Copy and paste the recipe URL from a <a href="https://github.com/jadkins89/Recipe-Scraper#supported-websites" target="_blank">supported website</a> into the Sous Chef URL bar (or make your own recipe!) and click the Listen button.
+						</p>
+						<p>
+							Sous Chef will respond to commands beginning with the phrase "Sous Chef" and in one of two formats:
+						</p>
+						<p>
+						1. "Sous Chef *ingredient*" where *ingredient* is the name of one of the ingredients in your recipe.
+						</p>
+						<p>
+							**** example inputs: "Sous Chef Carrots" or "Sous Chef Flour"
+						</p>
+							**** example outputs: "three carrots, diced" or "two cups whole wheat flour"
+						<p>
+							2. "Sous Chef Step *number*" where *number* is the number of one of the steps in the recipe instructions
+						</p>
+						<p>
+							**** example inputs: "Sous Chef Step One" or "Sous Chef Step Five"
+						</p>
+						<p>
+							**** example outputs: "Sautee garlic over medium heat" or "Add parsley to garnish"
+						</p>
+						<p>
+							Sous Chef will respond to these commands by reading the ingredient or recipe step aloud. That's it!
+						</p>
+						<h3>Credit</h3>
+						<p>Sous Chef really ain't much. It relies on:</p>
+						<p><a href="https://github.com/TalAter/annyang/" target="_blank">Annyang</a> for speech recognition</p>
+						<p><a href="https://github.com/jadkins89/Recipe-Scraper" target="_blank">Recipe-Scraper</a> for recipe parsing</p>
+						<p><a href="https://gist.github.com/woollsta/2d146f13878a301b36d7#file-chunkify-js" target="_blank">SpeechUtteranceChunker</a> to process text-to-speech</p>
+						<p><a href="https://github.com/adam-adair/SousChef">Git repo for Sous Chef</a></p>
+					</div> : null }
 				{
 					compatible ?
 					<div id="urlContainer">
 						<input type="text" id="recipeURL" name="recipeURL" placeholder="Paste recipe URL here..." onChange={updateRecipeURL}/>
 						{
 							ingredients.length || instructions.length ?
-							<div id="audioButtons">
-								<StartListening
+								<SpeechRecognition
 									ingredients={ingredients}
 									instructions={instructions}
 									showSpokenCommand={showSpokenCommand}
 									showReadAloud={showReadAloud}
 								/>
-								<StopListening/>
-							</div> :
+							 :
 							<div id="ownRecipe">Or make your own recipe to get started!</div>
 						}
 						{
@@ -223,42 +257,7 @@ export default class SousChef extends React.Component {
 							}
 						</div>
 				</div>
-				{ lookyWorky?
-					<div id="lookyWorky">
-						<p onClick={changeLooky} className="close">click to close</p>
-						<h3>How To Use</h3>
-						<p>
-							Copy and paste the recipe URL from a <a href="https://github.com/jadkins89/Recipe-Scraper#supported-websites" target="_blank">supported website</a> into the Sous Chef URL bar (or make your own recipe!) and click the Listen button.
-						</p>
-						<p>
-							Sous Chef will respond to commands beginning with the phrase "Sous Chef" and in one of two formats:
-						</p>
-						<p>
-						1. "Sous Chef *ingredient*" where *ingredient* is the name of one of the ingredients in your recipe.
-						</p>
-						<p>
-							**** example inputs: "Sous Chef Carrots" or "Sous Chef Flour"
-						</p>
-							**** example outputs: "three carrots, diced" or "two cups whole wheat flour"
-						<p>
-							2. "Sous Chef Step *number*" where *number* is the number of one of the steps in the recipe instructions
-						</p>
-						<p>
-							**** example inputs: "Sous Chef Step One" or "Sous Chef Step Five"
-						</p>
-						<p>
-							**** example outputs: "Sautee garlic over medium heat" or "Add parsley to garnish"
-						</p>
-						<p>
-							Sous Chef will respond to these commands by reading the ingredient or recipe step aloud. That's it!
-						</p>
-						<h3>Credit</h3>
-						<p>Sous Chef really ain't much. It relies on:</p>
-						<p><a href="https://github.com/TalAter/annyang/" target="_blank">Annyang</a> for speech recognition</p>
-						<p><a href="https://github.com/jadkins89/Recipe-Scraper" target="_blank">Recipe-Scraper</a> for recipe parsing</p>
-						<p><a href="https://gist.github.com/woollsta/2d146f13878a301b36d7#file-chunkify-js" target="_blank">SpeechUtteranceChunker</a> to process text-to-speech</p>
-						<p><a href="https://github.com/adam-adair/SousChef">Git repo for Sous Chef</a></p>
-					</div> : null }
+
 			</div>
 		)
 	}
